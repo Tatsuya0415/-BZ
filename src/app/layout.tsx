@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Footer } from "@/components/Footer";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto-sans-jp",
@@ -11,9 +12,29 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "かんたん相続BZ | セルフ相続登記・相続税申告の診断サービス",
-  description:
-    "相続登記・相続税申告を自分で進めたい人のためのセルフヘルプ・プラットフォーム。30秒の診断でセルフ対応/専門家への相談が必要かを判定します。",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} | セルフ相続登記・相続税申告の診断サービス`,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: "/",
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | セルフ相続登記・相続税申告の診断サービス`,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} | セルフ相続登記・相続税申告の診断サービス`,
+    description: SITE_DESCRIPTION,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({

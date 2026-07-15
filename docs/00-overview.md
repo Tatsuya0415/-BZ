@@ -46,6 +46,17 @@
 | [08-legal/tokushoho.md](08-legal/tokushoho.md) | 特定商取引法に基づく表記ひな形 |
 | [08-legal/privacy-policy.md](08-legal/privacy-policy.md) | プライバシーポリシーひな形 |
 | [08-legal/terms-of-service.md](08-legal/terms-of-service.md) | 利用規約ひな形 |
+| [09-launch-workflow.md](09-launch-workflow.md) | **実行フェーズ**: 立ち上げの具体的ワークフロー・週次スケジュール |
+| [10-ai-agent-system.md](10-ai-agent-system.md) | **実行フェーズ**: 実質1名運営を支えるAIエージェント体制設計 |
+
+## 実行フェーズへの移行(2026年7月14日〜)
+
+本プランは計画段階から実行段階に移行した。[09-launch-workflow.md](09-launch-workflow.md)に
+12週間でのMVP公開を目標とした具体的な週次タスク・チェックリストを、
+[10-ai-agent-system.md](10-ai-agent-system.md)に副業・実質1名運営を支えるAIエージェント体制
+(コンテンツ/SNS/開発/カスタマー対応/モニタリングの各エージェントと、人間が必ず担う法務ゲート
+の役割分担)を定義した。**次の一歩は[09-launch-workflow.md](09-launch-workflow.md)フェーズ0
+(事業準備チェックリスト)の着手である。**
 
 ## 注記
 

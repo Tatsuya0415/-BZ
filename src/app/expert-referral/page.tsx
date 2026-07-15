@@ -1,17 +1,21 @@
-import Link from "next/link";
-import { Button } from "@/components/ui";
+import { Suspense } from "react";
+import { ExpertReferralForm } from "./ExpertReferralForm";
 
 export default function ExpertReferralPage() {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-4 bg-zinc-50 px-6 py-16 text-center">
-      <h1 className="text-xl font-bold text-zinc-900">専門家紹介フォームは準備中です</h1>
-      <p className="max-w-md text-sm text-zinc-600">
-        提携司法書士・税理士への問い合わせ導線は開発中です(docs/09-launch-workflow.md フェーズ1参照)。
-        現時点で提携専門家はまだいません。
-      </p>
-      <Link href="/">
-        <Button variant="secondary">トップへ戻る</Button>
-      </Link>
+    <div className="flex flex-1 flex-col items-center bg-zinc-50 px-6 py-16">
+      <div className="flex w-full max-w-lg flex-col gap-6">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-xl font-bold text-zinc-900">専門家への相談</h1>
+          <p className="text-sm text-zinc-600">
+            提携する司法書士・税理士のご案内を準備中です。ご相談内容を送っていただければ、
+            準備が整い次第ご連絡します。
+          </p>
+        </div>
+        <Suspense fallback={null}>
+          <ExpertReferralForm />
+        </Suspense>
+      </div>
     </div>
   );
 }

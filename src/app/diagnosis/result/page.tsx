@@ -81,7 +81,7 @@ export default async function DiagnosisResultPage({
             title={cta.title}
             description={cta.description}
             primary={{ href: "/self-guide", label: "セルフ登記ガイドへ進む" }}
-            secondary={{ href: "/expert-referral", label: "提携専門家に相談する" }}
+            secondary={{ href: `/expert-referral?type=${result.type}`, label: "提携専門家に相談する" }}
           />
         ) : (
           <CTABlock
@@ -90,7 +90,7 @@ export default async function DiagnosisResultPage({
             primary={
               result.type === "self"
                 ? { href: "/self-guide", label: "セルフ登記ガイドへ進む" }
-                : { href: "/expert-referral", label: "提携専門家に相談する" }
+                : { href: `/expert-referral?type=${result.type}`, label: "提携専門家に相談する" }
             }
           />
         )}

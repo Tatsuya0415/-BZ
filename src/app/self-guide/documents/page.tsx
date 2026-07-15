@@ -1,4 +1,4 @@
-import { DocumentForm } from "./DocumentForm";
+import { DocumentForm } from "./DocumentClientLoader";
 
 export default function DocumentsPage() {
   return (

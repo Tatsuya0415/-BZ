@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SelectableCard, Stepper } from "@/components/ui";
 import { questions, type Answers, type QuestionId } from "@/lib/diagnosis";
+import { STORAGE_KEYS } from "@/lib/storageKeys";
 
 export function DiagnosisWizard() {
   const router = useRouter();
@@ -18,6 +19,11 @@ export function DiagnosisWizard() {
     setAnswers(nextAnswers);
 
     if (isLastStep) {
+      try {
+        window.localStorage.setItem(STORAGE_KEYS.diagnosisAnswers, JSON.stringify(nextAnswers));
+      } catch {
+        // ストレージ書き込み不可時は進捗保存をスキップして診断は続行する
+      }
       const params = new URLSearchParams(nextAnswers as Record<string, string>);
       router.push(`/diagnosis/result?${params.toString()}`);
       return;

@@ -10,6 +10,8 @@ import {
   type EstateDocumentInput,
   type RealEstateType,
 } from "@/lib/estateDocuments";
+import { STORAGE_KEYS } from "@/lib/storageKeys";
+import { useLocalStorageState } from "@/lib/useLocalStorageState";
 
 type DocumentKind = "family-relation" | "division-agreement" | "registration-application";
 
@@ -20,7 +22,10 @@ const documentLabels: Record<DocumentKind, { label: string; filename: string }> 
 };
 
 export function DocumentForm() {
-  const [input, setInput] = useState<EstateDocumentInput>(createEmptyEstateDocumentInput());
+  const [input, setInput] = useLocalStorageState<EstateDocumentInput>(
+    STORAGE_KEYS.documentDraft,
+    createEmptyEstateDocumentInput(),
+  );
   const [errors, setErrors] = useState<string[]>([]);
   const [downloading, setDownloading] = useState<DocumentKind | null>(null);
 
@@ -110,8 +115,20 @@ export function DocumentForm() {
     }
   }
 
+  function handleReset() {
+    if (!window.confirm("入力内容をすべて削除します。よろしいですか?")) return;
+    setInput(createEmptyEstateDocumentInput());
+  }
+
   return (
     <div className="flex flex-col gap-8">
+      <div className="flex items-center justify-between rounded-lg bg-tone-self-bg px-4 py-2 text-xs text-tone-self">
+        <span>入力内容はこの端末のブラウザに自動保存されます</span>
+        <button type="button" onClick={handleReset} className="font-medium hover:underline">
+          入力をクリア
+        </button>
+      </div>
+
       {errors.length > 0 && (
         <div className="rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-700">
           <ul className="list-disc space-y-1 pl-5">

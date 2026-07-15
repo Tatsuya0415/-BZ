@@ -1,5 +1,6 @@
 "use client";
 
+import { useId } from "react";
 import {
   buildChecklist,
   countChecklistProgress,
@@ -10,6 +11,7 @@ import { STORAGE_KEYS } from "@/lib/storageKeys";
 import { useLocalStorageState } from "@/lib/useLocalStorageState";
 
 export function ChecklistApp() {
+  const heirCountId = useId();
   const [input, setInput] = useLocalStorageState<ChecklistInput>(
     STORAGE_KEYS.checklistInput,
     createDefaultChecklistInput(),
@@ -31,8 +33,11 @@ export function ChecklistApp() {
       <section className="flex flex-col gap-4 rounded-lg border border-zinc-200 bg-white p-4">
         <h2 className="text-sm font-bold text-zinc-900">あなたのケースを教えてください</h2>
         <div className="flex flex-col gap-1">
-          <label className="text-xs font-medium text-zinc-700">相続人の人数</label>
+          <label htmlFor={heirCountId} className="text-xs font-medium text-zinc-700">
+            相続人の人数
+          </label>
           <input
+            id={heirCountId}
             type="number"
             min={1}
             value={input.heirCount}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Button, Input } from "@/components/ui";
 import { buildInquiryMailto, getContactEmail, type ExpertInquiry } from "@/lib/contact";
 
@@ -14,6 +14,7 @@ const diagnosisTypeLabel: Record<string, string> = {
 type Status = "idle" | "submitting" | "sent" | "fallback" | "error";
 
 export function ExpertReferralForm() {
+  const messageId = useId();
   const searchParams = useSearchParams();
   const diagnosisType = searchParams.get("type") ?? undefined;
 
@@ -109,8 +110,11 @@ export function ExpertReferralForm() {
         onChange={(e) => setForm((prev) => ({ ...prev, contact: e.target.value }))}
       />
       <div className="flex flex-col gap-1">
-        <label className="text-xs font-medium text-zinc-700">相談内容</label>
+        <label htmlFor={messageId} className="text-xs font-medium text-zinc-700">
+          相談内容
+        </label>
         <textarea
+          id={messageId}
           value={form.message}
           onChange={(e) => setForm((prev) => ({ ...prev, message: e.target.value }))}
           rows={5}

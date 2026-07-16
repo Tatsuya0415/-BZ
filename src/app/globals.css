@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* かんたん相続BZ デザイントークン(docs/06-component-spec.md 準拠) */
+  --tone-self: #16a34a; /* セルフ推奨: 緑系 */
+  --tone-self-bg: #f0fdf4;
+  --tone-agent: #ea580c; /* 代行推奨: オレンジ系 */
+  --tone-agent-bg: #fff7ed;
+  --tone-hybrid: #2563eb; /* ハイブリッド: 青系 */
+  --tone-hybrid-bg: #eff6ff;
+  --tone-neutral: #52525b;
+  --tone-neutral-bg: #f4f4f5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-tone-self: var(--tone-self);
+  --color-tone-self-bg: var(--tone-self-bg);
+  --color-tone-agent: var(--tone-agent);
+  --color-tone-agent-bg: var(--tone-agent-bg);
+  --color-tone-hybrid: var(--tone-hybrid);
+  --color-tone-hybrid-bg: var(--tone-hybrid-bg);
+  --color-tone-neutral: var(--tone-neutral);
+  --color-tone-neutral-bg: var(--tone-neutral-bg);
+  --font-sans: var(--font-noto-sans-jp);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+}
